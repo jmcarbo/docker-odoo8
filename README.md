@@ -4,11 +4,11 @@ docker-odoo8
 complete Odoo8 server
 
 
-= Build
+# Build
 
   make build
   
-= Run
+# Run
 
   make run
   
