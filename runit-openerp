@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# TODO: $db_start/$db_stop only for local DBs.
+sv start postgres || exit 1
+if [ -z "$DB_NAME" ]
+then
+  #exec sudo -i -u deploy   /odoo/openerp-server --unaccent --logfile=/var/log/openerp.log\
+  #        --database="$DB_NAME" --db_user="$DB_USER" --db_password="$DB_PASSWORD" \
+  #        --db_host="$DB_HOST" --db_port="$DB_PORT" --addons-path="$ADDONS_PATH" >>/var/log/openerp 2>&1
+  exec sudo -i -u deploy   /odoo/openerp-server --unaccent --logfile=/var/log/openerp.log\
+          --db_user="$DB_USER" --db_password="$DB_PASSWORD" \
+          --db_host="$DB_HOST" --db_port="$DB_PORT"  >>/var/log/openerp 2>&1
+else
+  exec sudo -i -u deploy   /odoo/openerp-server --unaccent --logfile=/var/log/openerp.log\
+          --db_user="$DB_USER" --db_password="$DB_PASSWORD" \
+          --db_host="$DB_HOST" --db_port="$DB_PORT"  >>/var/log/openerp 2>&1
+fi

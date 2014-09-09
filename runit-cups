@@ -1,0 +1,2 @@
+#!/bin/bash
+exec /usr/sbin/cupsd -f >>/var/log/cups/cups.log 2>&1
